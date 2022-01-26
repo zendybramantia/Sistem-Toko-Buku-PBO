@@ -26,7 +26,6 @@ public class Koneksi {
     private Connection conn;
     public void buatKoneksi(){
         try {
-            //load jdbc driver
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Koneksi.class.getName()).log(Level.SEVERE, null, ex);
@@ -35,19 +34,10 @@ public class Koneksi {
             this.conn = DriverManager.getConnection(DB_URL,DB_USER,DB_PASS);
             
         }catch(SQLException e){
-            System.err.println("Koneksi gagal !!!!");
+            System.err.println("Koneksi gagal!");
             System.err.println(e);
         }
     }
-    
-    public void tutupKoneksi(){
-        try {
-            this.conn.close();
-        } catch (SQLException ex) {
-            System.err.println("tidak ada koneksi yang terbuka");
-        }
-    }
-
     public Connection getConn() {
         return conn;
     }
